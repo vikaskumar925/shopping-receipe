@@ -29,7 +29,10 @@ export class RecipeService {
 		),
 	];
 	constructor(private slService:ShoppingListService){ }
-
+	setRecipes(recipes:Recipe[]){
+		this.recipes = recipes;
+		this.recipeChanged.next(this.recipes.slice());
+	}
 	getRecipes(){
 		return this.recipes.slice();
 	}
@@ -51,4 +54,5 @@ export class RecipeService {
 		this.recipes.splice(index, 1);
 		this.recipeChanged.next(this.recipes.slice());
 	}
+
 }
