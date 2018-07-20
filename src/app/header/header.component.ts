@@ -9,7 +9,7 @@ import { AuthService } from '../auth/auth.service'
 	styleUrls:['./header.component.css'],
 })
 export class HeaderComponent{
-	constructor(private dataStorageService:DataStorageService
+	constructor(private dataStorageService:DataStorageService,
 				private authService:AuthService){}
 	onSaveData(){
 		this.dataStorageService.storeRecipe()
@@ -21,5 +21,8 @@ export class HeaderComponent{
 	}
 	onFetchData(){
 		this.dataStorageService.getRecipes();
+	}
+	onLogout(){
+		this.authService.logOut();
 	}
 }
