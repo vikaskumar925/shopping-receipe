@@ -10,7 +10,7 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { AuthGaurd } from '../auth/auth-gaurd.service';
 
 const recipeRoutes:Routes = [
-	{ path : 'recipes',component: RecipesComponent, children:[
+	{ path : '',component: RecipesComponent, children:[
 		{ path : '', component:RecipeStartComponent },
 		{ path : 'new', component:RecipeEditComponent, canActivate:[AuthGaurd] },
 		{ path : ':id', component:RecipeDetailComponent },
