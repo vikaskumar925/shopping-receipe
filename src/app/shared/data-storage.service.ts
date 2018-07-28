@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
 import { AuthService } from '../auth/auth.service';
@@ -13,9 +13,11 @@ export class DataStorageService {
 			private authService:AuthService ){}
 	storeRecipe(){
 		const token = this.authService.getToken();
+		//const headers = new HttpHeaders().set('Authorization','Bearer sdfsd').append('contentType','json');
 		return this.httpClient.put('https://shopping-recipe-b286b.firebaseio.com/recipes.json?auth='+token,this.recipeService.getRecipes(),{
 			//observe:'events',
 			observe:'body',
+			//headers: headers,
 		});
 	}
 	getRecipes(){
