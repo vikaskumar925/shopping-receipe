@@ -20,7 +20,8 @@ export class DataStorageService {
 			params: new HttpParams().set('auth', token)
 			//headers: headers,
 		});*/
-		const req = new HttpRequest('PUT','https://shopping-recipe-b286b.firebaseio.com/recipes.json',this.recipeService.getRecipes(),{reportProgress:true, params: new HttpParams().set('auth', token)});
+		//const req = new HttpRequest('PUT','https://shopping-recipe-b286b.firebaseio.com/recipes.json',this.recipeService.getRecipes(),{reportProgress:true, params: new HttpParams().set('auth', token)});
+		const req = new HttpRequest('PUT','https://shopping-recipe-b286b.firebaseio.com/recipes.json',this.recipeService.getRecipes(),{reportProgress:true});
 		return this.httpClient.request(req);
 	}
 	getRecipes(){
@@ -29,7 +30,6 @@ export class DataStorageService {
 		this.httpClient.get<Recipe[]>('https://shopping-recipe-b286b.firebaseio.com/recipes.json',{
 			observe:'body',
 			responseType:'json',
-			params: new HttpParams().set('auth', token),
 		} )
 			.map(
 				(recipes) => {
