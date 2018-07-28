@@ -13,7 +13,10 @@ export class DataStorageService {
 			private authService:AuthService ){}
 	storeRecipe(){
 		const token = this.authService.getToken();
-		return this.httpClient.put('https://shopping-recipe-b286b.firebaseio.com/recipes.json?auth='+token,this.recipeService.getRecipes());
+		return this.httpClient.put('https://shopping-recipe-b286b.firebaseio.com/recipes.json?auth='+token,this.recipeService.getRecipes(),{
+			//observe:'events',
+			observe:'body',
+		});
 	}
 	getRecipes(){
 		const token = this.authService.getToken();
