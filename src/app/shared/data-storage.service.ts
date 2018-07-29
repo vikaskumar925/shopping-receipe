@@ -12,7 +12,7 @@ export class DataStorageService {
 			private recipeService:RecipeService, 
 			private authService:AuthService ){}
 	storeRecipe(){
-		const token = this.authService.getToken();
+		//const token = this.authService.getToken();
 		//const headers = new HttpHeaders().set('Authorization','Bearer sdfsd').append('contentType','json');
 		/*return this.httpClient.put('https://shopping-recipe-b286b.firebaseio.com/recipes.json',this.recipeService.getRecipes(),{
 			//observe:'events',
@@ -25,7 +25,7 @@ export class DataStorageService {
 		return this.httpClient.request(req);
 	}
 	getRecipes(){
-		const token = this.authService.getToken();
+		//const token = this.authService.getToken();
 		//this.httpClient.get<Recipe[]>('https://shopping-recipe-b286b.firebaseio.com/recipes.json?auth='+token)
 		this.httpClient.get<Recipe[]>('https://shopping-recipe-b286b.firebaseio.com/recipes.json',{
 			observe:'body',
