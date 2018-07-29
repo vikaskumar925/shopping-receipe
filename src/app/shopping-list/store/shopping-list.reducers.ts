@@ -15,6 +15,11 @@ export function shoppingListReducer(state = initialState, action:ShoppingListAct
 				ingredients:[...state.Ingredients, action.payload]
 
 			}
+		case ShoppingListActions.ADD_INGREDIENTS:
+			return {
+				...state,
+				ingredients:[...state.Ingredients,...action.payload]
+			}
 		default:
 			return state;
 	}	
