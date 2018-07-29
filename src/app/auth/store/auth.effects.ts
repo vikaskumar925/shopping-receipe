@@ -5,6 +5,7 @@ import * as AuthActions from './auth.actions';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
 import { fromPromise } from 'rxjs/Observable/fromPromise';
 import * as firebase from 'firebase';
 
@@ -59,7 +60,12 @@ export class AuthEffects{
 				}
 			];
 		});
-
+	@Effect({dispatch:false})
+	authLogout = this.actions$
+		.ofType(AuthActions.LOGOUT)
+		.do(()=>{
+			this.router.navigate(['/']);
+		});
 
 	constructor(private actions$:Actions, private router:Router){}
 }
