@@ -45,7 +45,7 @@ export function recipeReducer(state = initialState, action:RecipeActions.RecipeA
 				recipes:[...state.recipes, action.payload],
 			};
 		case RecipeActions.UPDATE_RECIPE:
-			const recipe = state.recipes.[action.payload.index];
+			const recipe = state.recipes[action.payload.index];
 			const updatedRecipe ={
 				...recipe,
 				...action.payload.updatedRecipe,
