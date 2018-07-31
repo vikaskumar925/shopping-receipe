@@ -63,6 +63,7 @@ export function recipeReducer(state = initialState, action:RecipeActions.RecipeA
 				...state,
 				recipes:oldRecipes,
 			};
+		
 		default:
 			return state;
 	}
