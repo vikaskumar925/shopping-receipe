@@ -21,13 +21,7 @@ export class HeaderComponent implements OnInit{
 		this.authState = this.store.select('auth');
 	}
 	onSaveData(){
-		this.dataStorageService.storeRecipe()
-			.subscribe(
-				(response)=>{
-					//console.log(response.type === HttpEventType.Response);
-					console.log(response);
-				},
-			);
+		this.store.dispatch(new RecipeActions.StoreRecipes());
 	}
 	onFetchData(){
 		this.store.dispatch(new RecipeActions.FetchRecipes());

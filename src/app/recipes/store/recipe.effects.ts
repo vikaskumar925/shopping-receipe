@@ -4,6 +4,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import * as RecipeActions from './recipe.actions';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/withLatestFrom';
 import { Recipe } from '../recipe.model';
 import * as fromRecipe from '../store/recipe.reducers';
 
@@ -32,6 +33,13 @@ export class RecipeEffects {
 			}
 		);
 
-
+	@Effect({dispatch:false})
+	recipeStore = this.actions$
+		.ofType(RecipeActions.STORE_RECIPES)
+		.withLatestFrom(this.store.select('recipes'))
+		.switchMap(([action, state])=>{
+			const req = new HttpRequest('PUT','https://shopping-recipe-b286b.firebaseio.com/recipes.json',state.recipes,{reportProgress:true});
+			return this.httpClient.request(req);
+		})
 	constructor(private actions$:Actions, private httpClient:HttpClient,private store:Store<fromRecipe.FeaturedState>){}
 }
